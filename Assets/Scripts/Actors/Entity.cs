@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 namespace Actors
 {
-    public class Entity : MonoBehaviour
+    public abstract class Entity : MonoBehaviour
     {
         public UnityEvent OnDamageTaken;
         
@@ -26,7 +26,12 @@ namespace Actors
             _health -= damage;
             
             OnDamageTaken.Invoke();
+
+            if (_health <= 0)
+                Die();
         }
+
+        protected abstract void Die();
         
         private void DestroySelf() => Destroy(gameObject);
     }

@@ -59,6 +59,11 @@ namespace Actors
             _animator.SetBool(DELTA_MOVING, _animator.GetBool(MOVING));
             _animator.SetBool(MOVING, _moveInput.magnitude > 0);
         
+            if (_aimInput.magnitude >= 0.05f)
+                SetLookDirection(_aimInput);
+            else if (_moveInput.magnitude >= 0.05f)
+                SetLookDirection(_moveInput);
+            
             SetTargetInteractable();
 
             if (_equippedWeapon)
@@ -76,16 +81,24 @@ namespace Actors
             _animator.SetInteger(DIR_X, dirX);
             _animator.SetInteger(DIR_Y, dirY);
 
-            _lookDir = dir.normalized;
+            dir.Normalize();
+            
+            _lookDir = dir;
+            
+            _weaponPositionTransform.right = dir.normalized;
+            _weaponPositionTransform.localPosition = dir.normalized * _weaponPositionOffset;
+
+            float rot = Mathf.Deg2Rad * _weaponPositionTransform.rotation.eulerAngles.z;
+            bool flip = Mathf.Cos(rot) < 0;
+            foreach (var weapon in _weapons)
+            {
+                if (weapon)
+                    weapon.FlipSprite(flip);
+            }
         }
 
-        public override void TakeDamage(float damage)
+        protected override void Die()
         {
-            base.TakeDamage(damage);
-
-            if (_health > 0)
-                return;
-            
             _animator.SetBool(DEAD, true);
             
             // TODO: Switch input mapping instead
@@ -119,8 +132,8 @@ namespace Actors
             if (isWeapon)
                 PickUp(weapon);
         }
-    
-        public void PickUp(Weapon newWeapon)
+
+        private void PickUp(Weapon newWeapon)
         {
             int index = _equippedWeaponIndex;
 
@@ -164,6 +177,8 @@ namespace Actors
     
         private void OnWeaponIndexChanged()
         {
+            _deltaEquippedWeaponIndex = _equippedWeaponIndex;
+            
             int numWeapons = _weapons.Count(weapon => weapon);
             _equippedWeaponIndex %= numWeapons;
 
@@ -180,31 +195,11 @@ namespace Actors
         {
             _moveInput = context.ReadValue<Vector2>();
             _rigidbody.linearVelocity = _moveInput * _moveSpeed;
-        
-            if (_moveInput.magnitude >= 0.05f &&
-                _aimInput.magnitude < 0.05f)
-                SetLookDirection(_moveInput);
         }
 
         public void OnAimController(InputAction.CallbackContext context)
         {
             _aimInput = context.ReadValue<Vector2>();
-
-            if (_aimInput.magnitude < 0.05f)
-                return;
-        
-            SetLookDirection(_aimInput);
-        
-            _weaponPositionTransform.right = _aimInput.normalized;
-            _weaponPositionTransform.localPosition = _aimInput.normalized * _weaponPositionOffset;
-
-            float rot = Mathf.Deg2Rad * _weaponPositionTransform.rotation.eulerAngles.z;
-            bool flip = Mathf.Cos(rot) < 0;
-            foreach (var weapon in _weapons)
-            {
-                if (weapon)
-                    weapon.FlipSprite(flip);
-            }
         }
 
         public void OnDash(InputAction.CallbackContext context)

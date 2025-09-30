@@ -12,6 +12,7 @@ namespace Weapons.Attacks
         private float _totalPathLength;
         
         private Vector3 _startPosition;
+        private Quaternion _rotation;
 
         public void Initialize(Spline path, float speed, float damage, float lifeTime)
         {
@@ -23,6 +24,7 @@ namespace Weapons.Attacks
             _totalPathLength = path.CalculateLength(transform.worldToLocalMatrix);
             
             _startPosition = transform.position;
+            _rotation = transform.rotation;
         }
         
         private void FixedUpdate()
@@ -31,7 +33,7 @@ namespace Weapons.Attacks
             
             float t = Mathf.Clamp01(_distanceTraveled / _totalPathLength);
             
-            Vector3 pos = _startPosition + (Vector3) _path.EvaluatePosition(t);
+            Vector3 pos = _startPosition + _rotation * _path.EvaluatePosition(t);
             transform.position = pos;
             
             if (Mathf.Approximately(t, 1f))
