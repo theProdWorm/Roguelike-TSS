@@ -7,7 +7,7 @@ namespace Actors.Enemies
     {
         private static readonly int HEALTH = Animator.StringToHash("healthPercent");
         
-        [SerializeField] private Animator _animator;
+        [SerializeField] protected Animator _animator;
         
         public UnityEvent<Enemy> OnDeath;
         
