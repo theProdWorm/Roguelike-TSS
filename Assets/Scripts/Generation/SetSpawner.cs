@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Actors;
 using Actors.Enemies;
 using UnityEngine;
 
@@ -37,7 +38,7 @@ namespace Generation
             }
         }
 
-        private void OnEnemyDeath(Enemy enemy)
+        private void OnEnemyDeath(Entity enemy)
         {
             
         }

@@ -47,8 +47,10 @@ namespace Actors
         
         private bool _attacking;
         
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
+            
             _weapons = new Weapon[_maxWeapons];
             
             _input = GetComponent<PlayerInput>();
@@ -137,6 +139,7 @@ namespace Actors
         {
             int index = _equippedWeaponIndex;
 
+            // Find first empty slot
             for (int i = 0; i < _maxWeapons; i++)
             {
                 if (_weapons[i] != null) 
@@ -146,15 +149,22 @@ namespace Actors
                 break;
             }
 
+            // If true, current equipped weapon should be replaced
             if (index == _equippedWeaponIndex)
             {
-                Drop(_equippedWeaponIndex);
+                var weapon = _weapons[_equippedWeaponIndex];
+                weapon.SetEquipper(null);   // So it gets unequipped
+                Drop(_equippedWeaponIndex); // and dropped
             }
 
+            newWeapon.SetEquipper(this); // Equip new weapon
+            
+            // Update references
             _weapons[index] = newWeapon;
             _equippedWeapon = newWeapon;
             _equippedWeaponIndex = index;
         
+            // Weapon follows player
             newWeapon.transform.SetParent(_weaponPositionTransform);
             newWeapon.transform.localPosition = Vector3.zero;
             newWeapon.transform.localRotation = Quaternion.identity;
@@ -162,10 +172,10 @@ namespace Actors
     
         private void Drop(int index)
         {
-            Weapon weapon = _weapons[index];
+            var weapon = _weapons[index];
             _weapons[index] = null;
 
-            weapon.Attacking = false;
+            weapon.Attacking = false; // Prevents undesirable attacks upon enabling the weapon again
         
             var throwable = weapon.GetComponent<Throwable>();
             throwable.Throw(_lookDir, 2f);
@@ -182,7 +192,7 @@ namespace Actors
             int numWeapons = _weapons.Count(weapon => weapon);
             _equippedWeaponIndex %= numWeapons;
 
-            Weapon previousWeapon = _weapons[_deltaEquippedWeaponIndex];
+            var previousWeapon = _weapons[_deltaEquippedWeaponIndex];
             previousWeapon.Attacking = false;
             previousWeapon.gameObject.SetActive(false);
         

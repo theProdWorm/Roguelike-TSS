@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2486956590932201602}
   - component: {fileID: 1733001703391361494}
   - component: {fileID: -6357212884291535630}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Default Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,12 +156,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -338998976, guid: 54913ae81c17ca44ab80b11d906d1e03, type: 3}
+  m_Sprite: {fileID: 2208703988740019828, guid: b9487de2e2af1604096f53c70bf25cc8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.33333334, y: 0.5416667}
+  m_Size: {x: 0.25, y: 0.25}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

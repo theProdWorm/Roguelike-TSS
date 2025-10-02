@@ -14,7 +14,7 @@ namespace Weapons
         protected override Attack PerformAttack()
         {
             var attack = (ProjectileAttack) base.PerformAttack();
-            attack.Initialize(_trajectories.Splines[_currentTrajectoryIndex], _projectileSpeed, Damage, 1f);
+            attack.Initialize(_trajectories.Splines[_currentTrajectoryIndex], _projectileSpeed, Damage, 1f, _allyTag);
 
             _currentTrajectoryIndex++;
             _currentTrajectoryIndex %= _trajectories.Splines.Count;

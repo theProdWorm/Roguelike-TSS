@@ -1,4 +1,5 @@
 using System.Collections;
+using Actors;
 using UnityEngine;
 using Weapons.Attacks;
 
@@ -15,7 +16,9 @@ namespace Weapons
         public bool Burst;
         
         public float Damage = 1f;
-
+        
+        protected string _allyTag;
+        
         private SpriteRenderer _spriteRenderer;
         
         public bool Attacking { get; set; }
@@ -58,6 +61,11 @@ namespace Weapons
                 _currentSequenceIndex = 0;
         }
 
+        public void SetEquipper(Entity entity)
+        {
+            _allyTag = entity.tag;
+        }
+
         private IEnumerator AttackRoutine()
         {
             int remainingAttacks = _attackSequence.Length;
@@ -89,7 +97,7 @@ namespace Weapons
             Attack attack = _attackSequence[_currentSequenceIndex];
             Attack attackInstance = Instantiate(attack, transform.position, transform.rotation);
             
-            attackInstance.Initialize(Damage, 1f);
+            attackInstance.Initialize(Damage, 1f, _allyTag);
             
             _currentSequenceIndex++;
             _currentSequenceIndex %= _attackSequence.Length; // Loop sequence

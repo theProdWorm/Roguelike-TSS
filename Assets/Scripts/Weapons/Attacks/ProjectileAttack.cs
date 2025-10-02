@@ -14,9 +14,9 @@ namespace Weapons.Attacks
         private Vector3 _startPosition;
         private Quaternion _rotation;
 
-        public void Initialize(Spline path, float speed, float damage, float lifeTime)
+        public void Initialize(Spline path, float speed, float damage, float lifeTime, string enemyTag)
         {
-            Initialize(damage, lifeTime);
+            Initialize(damage, lifeTime, enemyTag);
             
             _path.Copy(path);
             _speed = speed;
@@ -42,10 +42,12 @@ namespace Weapons.Attacks
 
         protected override void OnTriggerEnter2D(Collider2D otherCollider)
         {
-            if (!otherCollider.CompareTag("Enemy"))
+            base.OnTriggerEnter2D(otherCollider);
+
+            if (otherCollider.CompareTag(_allyTag))
                 return;
             
-            base.OnTriggerEnter2D(otherCollider);
+            Destroy(gameObject);
         }
     }
 }

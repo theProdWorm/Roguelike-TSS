@@ -13,7 +13,9 @@ namespace Actors
         [InspectorName("General Intensity")]
         [Range(0, 1)]
         [SerializeField] private float _screenShakeIntensityGeneral = 1f;
-    
+
+        private float _lastSetIntensity;
+        
         private Camera _camera;
     
         private Vector2 _shakeOffset;
@@ -27,11 +29,16 @@ namespace Actors
         {
             _camera.transform.position = Target.position + Offset + (Vector3) _shakeOffset;
         }
-    
-        public void Shake(float intensity, float duration)
-        {
-            float outputIntensity = intensity * _screenShakeIntensityGeneral;
 
+        public void SetShakeIntensity(float intensity)
+        {
+            _lastSetIntensity = intensity;
+        }
+        
+        public void Shake(float duration)
+        {
+            float outputIntensity = _lastSetIntensity * _screenShakeIntensityGeneral;
+            
             StartCoroutine(ShakeRoutine(outputIntensity, duration));
         }
 

@@ -5,6 +5,7 @@ namespace Actors
 {
     public abstract class Entity : MonoBehaviour
     {
+        public UnityEvent<Entity> OnDeath;
         public UnityEvent OnDamageTaken;
         
         [Header("Stats")]
@@ -16,7 +17,7 @@ namespace Actors
 
         protected float _health;
         
-        private void Awake()
+        protected virtual void Awake()
         {
             _health = _maxHealth;
         }
@@ -24,14 +25,17 @@ namespace Actors
         public virtual void TakeDamage(float damage)
         {
             _health -= damage;
-            
-            OnDamageTaken.Invoke();
 
+            OnDamageTaken.Invoke();
+            
             if (_health <= 0)
                 Die();
         }
 
-        protected abstract void Die();
+        protected virtual void Die()
+        {
+            OnDeath.Invoke(this);
+        }
         
         private void DestroySelf() => Destroy(gameObject);
     }
