@@ -61,8 +61,6 @@ namespace Actors.Enemies.DarkFairy
                 _animator.SetFloat(MELEE_COOLDOWN, _meleeTimer -= Time.deltaTime);
         }
 
-        public void SetMoveDir(Vector2 dir) => _rigidbody.linearVelocity = _moveSpeed * dir;
-
         public void Melee()
         {
             Player targetPlayer = _players[0];

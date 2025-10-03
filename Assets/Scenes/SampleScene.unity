@@ -1415,8 +1415,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _maxHealth: 100
-  _moveSpeed: 5
+  MaxHealth: 100
+  MoveSpeed: 3
   _rigidbody: {fileID: 745423338}
   _animator: {fileID: 745423340}
   _camera: {fileID: 519420033}
@@ -2382,6 +2382,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3695196286652730244, guid: f8ab78df9ba31324bba627a8a9411ce9, type: 3}
+      propertyPath: MoveSpeed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3695196286652730244, guid: f8ab78df9ba31324bba627a8a9411ce9, type: 3}
       propertyPath: _moveSpeed
       value: 4

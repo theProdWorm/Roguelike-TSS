@@ -9,8 +9,8 @@ namespace Actors
         public UnityEvent OnDamageTaken;
         
         [Header("Stats")]
-        [SerializeField] protected float _maxHealth = 100f;
-        [SerializeField] protected float _moveSpeed = 3f;
+        public float MaxHealth = 100f;
+        public float MoveSpeed = 3f;
 
         [Header("References")]
         [SerializeField] protected Rigidbody2D _rigidbody;
@@ -19,7 +19,7 @@ namespace Actors
         
         protected virtual void Awake()
         {
-            _health = _maxHealth;
+            _health = MaxHealth;
         }
         
         public virtual void TakeDamage(float damage)

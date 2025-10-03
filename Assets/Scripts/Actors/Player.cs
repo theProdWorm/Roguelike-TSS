@@ -204,7 +204,7 @@ namespace Actors
         public void OnMove(InputAction.CallbackContext context)
         {
             _moveInput = context.ReadValue<Vector2>();
-            _rigidbody.linearVelocity = _moveInput * _moveSpeed;
+            _rigidbody.linearVelocity = _moveInput * MoveSpeed;
         }
 
         public void OnAimController(InputAction.CallbackContext context)

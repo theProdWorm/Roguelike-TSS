@@ -321,7 +321,7 @@ AnimatorController:
     m_Controller: {fileID: 9100000}
   - m_Name: spellCooldown
     m_Type: 1
-    m_DefaultFloat: 1000
+    m_DefaultFloat: 15
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
@@ -333,7 +333,7 @@ AnimatorController:
     m_Controller: {fileID: 9100000}
   - m_Name: shieldCooldown
     m_Type: 1
-    m_DefaultFloat: 1000
+    m_DefaultFloat: 60
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}

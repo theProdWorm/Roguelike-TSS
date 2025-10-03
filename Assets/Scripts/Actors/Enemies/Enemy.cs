@@ -13,7 +13,7 @@ namespace Actors.Enemies
         {
             base.TakeDamage(damage);
             
-            _animator.SetFloat(HEALTH, _health / _maxHealth);
+            _animator.SetFloat(HEALTH, _health / MaxHealth);
         }
     }
 }

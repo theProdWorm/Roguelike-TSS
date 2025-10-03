@@ -9,6 +9,7 @@ namespace Actors.Enemies.DarkFairy
         
         private Transform _targetPlayer;
         private DarkFairy _darkFairy;
+        private Rigidbody2D _rigidbody;
         
         public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
@@ -19,21 +20,29 @@ namespace Actors.Enemies.DarkFairy
             _targetPlayer = players[index].transform;
 
             _darkFairy = animator.GetComponent<DarkFairy>();
+            _rigidbody = animator.GetComponent<Rigidbody2D>();
         }
 
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            var dir = (_targetPlayer.position - animator.transform.position).normalized;
-            _darkFairy.SetMoveDir(dir);
+            var playerDistanceVector = _targetPlayer.position - animator.transform.position;
+            var playerDistance = playerDistanceVector.magnitude;
+
+            animator.SetFloat(PLAYER_DISTANCE, playerDistance);
+            if (playerDistanceVector.magnitude <= 1)
+            {
+                _rigidbody.linearVelocity = Vector2.zero;
+                return;
+            }
             
-            var distanceToPlayer = Vector2.Distance(animator.transform.position, _targetPlayer.position);
-            animator.SetFloat(PLAYER_DISTANCE, distanceToPlayer);
+            var movementVector = _darkFairy.MoveSpeed * playerDistanceVector.normalized;
+            _rigidbody.linearVelocity = movementVector;
         }
         
         public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
             animator.SetBool(IDLE, false);
-            _darkFairy.SetMoveDir(Vector2.zero);
+            _rigidbody.linearVelocity = Vector2.zero;
         }
     }
 }
