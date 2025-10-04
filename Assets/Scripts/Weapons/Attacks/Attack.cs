@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Weapons.Attacks
 {
-    public abstract class Attack : MonoBehaviour
+    public class Attack : MonoBehaviour
     {
         [SerializeField] protected float _damage = 1f;
         [SerializeField] protected float _lifeTime = 1f;

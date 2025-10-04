@@ -26,8 +26,6 @@ namespace Weapons.Attacks
             
             _startPosition = transform.position;
             _rotation = transform.rotation;
-            
-            print("projectile spawned");
         }
         
         private void FixedUpdate()

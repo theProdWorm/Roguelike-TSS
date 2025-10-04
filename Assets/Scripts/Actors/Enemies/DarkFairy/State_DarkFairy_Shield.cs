@@ -5,7 +5,7 @@ namespace Actors.Enemies.DarkFairy
 {
     public class State_DarkFairy_Shield : StateMachineBehaviour
     {
-        private static readonly int IDLE = Animator.StringToHash("Idle");
+        private static readonly int IDLE = Animator.StringToHash("idle");
         
         [SerializeField] private Entity _minionPrefab;
         
@@ -17,6 +17,8 @@ namespace Actors.Enemies.DarkFairy
 
         private DarkFairy _darkFairy;
 
+        private Animator _animator;
+
         private float _remainingShield;
 
         private float _spawnTimer;
@@ -24,21 +26,14 @@ namespace Actors.Enemies.DarkFairy
         
         public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
+            _animator = animator;
+            
             _darkFairy = animator.GetComponent<DarkFairy>();
             _darkFairy.Invincible = true;
             
             _remainingShield = _shieldAmount;
 
-            _darkFairy.OnDamageTaken.AddListener(damage =>
-            {
-                _remainingShield -= damage;
-
-                if (_remainingShield > 0) 
-                    return;
-                
-                _darkFairy.Invincible = false;
-                animator.SetBool(IDLE, true);
-            });
+            _darkFairy.OnDamageTaken.AddListener(OnDamageTaken);
         }
 
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -61,6 +56,23 @@ namespace Actors.Enemies.DarkFairy
             minionInstance.OnDeath.AddListener(minion => _aliveMinions.Remove(minion));
             
             _aliveMinions.Add(minionInstance);
+        }
+
+        private void OnDamageTaken(float damage)
+        {
+            _remainingShield -= damage;
+
+            if (_remainingShield > 0)
+                return;
+                
+            _darkFairy.Invincible = false;
+            _animator.SetBool(IDLE, true);
+        }
+
+        public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+        {
+            _darkFairy.ResetShieldCooldown();
+            _darkFairy.OnDamageTaken.RemoveListener(OnDamageTaken);
         }
     }
 }

@@ -26,6 +26,8 @@ namespace Actors.Enemies.DarkFairy
             _castingStarted = false;
             _remainingDuration = _castDuration;
             _timeUntilNextCast = 0;
+
+            animator.playbackTime = 0;
         }
 
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

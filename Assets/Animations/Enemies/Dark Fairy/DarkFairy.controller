@@ -259,7 +259,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _minionPrefab: {fileID: 6808932505879166606, guid: d95f490b59d94c14cb1da23228a1edb5, type: 3}
-  _shieldAmount: 0.3
+  _shieldAmount: 30
   _spawnRange: 3
   _spawnDelay: 1
   _maxMinions: 10
