@@ -62,7 +62,8 @@ AnimatorState:
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -731701856939857489}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: -986763007189062860}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -71,7 +72,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 0}
+  m_Motion: {fileID: 7400000, guid: 9fde9786b5f99e247b9bc3c3e5429c04, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -245,6 +246,23 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!114 &-986763007189062860
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47107b72882b426d8821b193b3984967, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _minionPrefab: {fileID: 6808932505879166606, guid: d95f490b59d94c14cb1da23228a1edb5, type: 3}
+  _shieldAmount: 0.3
+  _spawnRange: 3
+  _spawnDelay: 1
+  _maxMinions: 10
 --- !u!1101 &-731701856939857489
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -333,13 +351,13 @@ AnimatorController:
     m_Controller: {fileID: 9100000}
   - m_Name: shieldCooldown
     m_Type: 1
-    m_DefaultFloat: 60
+    m_DefaultFloat: 3
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
   - m_Name: meleeCooldown
     m_Type: 1
-    m_DefaultFloat: 1
+    m_DefaultFloat: 0.5
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}

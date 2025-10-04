@@ -6,27 +6,35 @@ namespace Actors
     public abstract class Entity : MonoBehaviour
     {
         public UnityEvent<Entity> OnDeath;
-        public UnityEvent OnDamageTaken;
+        public UnityEvent<float> OnDamageTaken;
         
         [Header("Stats")]
-        public float MaxHealth = 100f;
+        public float MaxHealth = 10f;
         public float MoveSpeed = 3f;
 
         [Header("References")]
         [SerializeField] protected Rigidbody2D _rigidbody;
 
         protected float _health;
+        protected bool _dead;
+        
+        public bool Invincible { get; set; }
         
         protected virtual void Awake()
         {
             _health = MaxHealth;
         }
+
+        public float GetHealth() => _health;
+        
+        public Vector2 GetVelocity() => _rigidbody.linearVelocity;
         
         public virtual void TakeDamage(float damage)
         {
-            _health -= damage;
+            if (!Invincible)
+                _health -= damage;
 
-            OnDamageTaken.Invoke();
+            OnDamageTaken.Invoke(damage);
             
             if (_health <= 0)
                 Die();
@@ -34,7 +42,11 @@ namespace Actors
 
         protected virtual void Die()
         {
+            if (_dead)
+                return;
+            
             OnDeath.Invoke(this);
+            _dead = true;
         }
         
         private void DestroySelf() => Destroy(gameObject);

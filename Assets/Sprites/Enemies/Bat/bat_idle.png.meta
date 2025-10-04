@@ -1,22 +1,16 @@
 fileFormatVersion: 2
-guid: a77edf98e3a41804ebf296d044eae1b0
+guid: 92bc69d9a6a25834b9d585cd8632bf4d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 801369374896446965
-    second: darkfairy_spirit_summoned_0
+      213: 6837182999764828060
+    second: darkfairy_spirit_idle_0
   - first:
-      213: -7371654060009055136
-    second: darkfairy_spirit_summoned_1
+      213: 484663102054166944
+    second: darkfairy_spirit_idle_1
   - first:
-      213: 5510698131698919155
-    second: darkfairy_spirit_summoned_2
-  - first:
-      213: 1570838031608506370
-    second: darkfairy_spirit_summoned_3
-  - first:
-      213: -5689589811300693016
-    second: darkfairy_spirit_summoned_4
+      213: 5955548131122345890
+    second: darkfairy_spirit_idle_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -108,11 +102,24 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: darkfairy_spirit_summoned_0
+      name: bat_idle_0
       rect:
         serializedVersion: 2
         x: 0
@@ -125,16 +132,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 5fd549c53390f1b00800000000000000
-      internalID: 801369374896446965
+      spriteID: a473dc532c5855b469aafccfcefc3ae3
+      internalID: -1710195342
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: darkfairy_spirit_summoned_1
+      name: bat_idle_1
       rect:
         serializedVersion: 2
         x: 64
@@ -147,16 +154,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 06c181a60bf92b990800000000000000
-      internalID: -7371654060009055136
+      spriteID: e661f72c3aa309b4fa249d9b0969b516
+      internalID: -660755050
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: darkfairy_spirit_summoned_2
+      name: bat_idle_2
       rect:
         serializedVersion: 2
         x: 128
@@ -169,54 +176,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 3f6a25cf0cee97c40800000000000000
-      internalID: 5510698131698919155
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: darkfairy_spirit_summoned_3
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 208e2b9fddcbcc510800000000000000
-      internalID: 1570838031608506370
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: darkfairy_spirit_summoned_4
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8eb8dbb16348a01b0800000000000000
-      internalID: -5689589811300693016
+      spriteID: 293655f0c243991418166ae729240912
+      internalID: 1642875345
       vertices: []
       indices: 
       edges: []
@@ -225,7 +188,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 86399bcbf08254a41ae99f2c47e7e4a5
+    spriteID: eef07111841852e419a1a34f80e2aa1d
     internalID: 0
     vertices: []
     indices: 
@@ -235,11 +198,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      darkfairy_spirit_summoned_0: 801369374896446965
-      darkfairy_spirit_summoned_1: -7371654060009055136
-      darkfairy_spirit_summoned_2: 5510698131698919155
-      darkfairy_spirit_summoned_3: 1570838031608506370
-      darkfairy_spirit_summoned_4: -5689589811300693016
+      bat_idle_0: -1710195342
+      bat_idle_1: -660755050
+      bat_idle_2: 1642875345
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

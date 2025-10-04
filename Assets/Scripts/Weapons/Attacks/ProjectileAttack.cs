@@ -5,8 +5,8 @@ namespace Weapons.Attacks
 {
     public class ProjectileAttack : Attack
     {
-        [SerializeField] private Spline _path;
-        [SerializeField] private float _speed;
+        private Spline _path;
+        private float _speed;
 
         private float _distanceTraveled;
         private float _totalPathLength;
@@ -14,10 +14,11 @@ namespace Weapons.Attacks
         private Vector3 _startPosition;
         private Quaternion _rotation;
 
-        public void Initialize(Spline path, float speed, float damage, float lifeTime, string enemyTag)
+        public void Initialize(Spline path, float speed, float damage, string allyTag)
         {
-            Initialize(damage, lifeTime, enemyTag);
+            Initialize(damage, allyTag);
             
+            _path = path;
             _path.Copy(path);
             _speed = speed;
             
@@ -25,6 +26,8 @@ namespace Weapons.Attacks
             
             _startPosition = transform.position;
             _rotation = transform.rotation;
+            
+            print("projectile spawned");
         }
         
         private void FixedUpdate()

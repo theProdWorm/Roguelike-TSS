@@ -17,7 +17,7 @@ namespace Actors.Enemies.DarkFairy
         [SerializeField] private float _meleeDamage = 10f;
 
         private Player[] _players;
-        
+
         private float _teleportCooldown;
         private float _spellCooldown;
         private float _shieldCooldown;
@@ -27,6 +27,8 @@ namespace Actors.Enemies.DarkFairy
         private float _spellTimer;
         private float _shieldTimer;
         private float _meleeTimer;
+        
+        private float _spellAnimationLength;
 
         protected override void Awake()
         {
@@ -41,6 +43,14 @@ namespace Actors.Enemies.DarkFairy
             _spellTimer = _spellCooldown;
             _shieldTimer = _shieldCooldown;
             _meleeTimer = _meleeCooldown;
+            
+            var spellAnimator = _spellPrefab.GetComponent<Animator>();
+            var spellAnimatorController = spellAnimator.runtimeAnimatorController;
+            
+            var spellAnimation = spellAnimatorController.animationClips[0];
+            _spellAnimationLength = spellAnimation.length;
+            
+            print(_spellAnimationLength);
         }
         
         private void Start()
@@ -80,15 +90,20 @@ namespace Actors.Enemies.DarkFairy
 
             Vector2 attackPos = Vector2.MoveTowards(transform.position, targetPlayer.transform.position, 1f);
             var attackInstance = Instantiate(_meleePrefab, attackPos, Quaternion.identity);
-            attackInstance.Initialize(_meleeDamage, 0.05f, "Player");
+            attackInstance.Initialize(_meleeDamage, "Enemy");
         }
 
         public void CastSpell()
         {
             foreach (var player in _players)
             {
-                var attackInstance = Instantiate(_spellPrefab, player.transform.position, Quaternion.identity);
-                attackInstance.Initialize(_spellDamage, Mathf.Infinity, "Player"); // Attack handles its own lifetime
+                Vector2 playerVelocity = player.GetVelocity();
+                Vector2 playerPos = player.transform.position;
+                
+                Vector2 calculatedPos = playerPos + _spellAnimationLength * 0.5f * playerVelocity;
+                
+                var attackInstance = Instantiate(_spellPrefab, calculatedPos, Quaternion.identity);
+                attackInstance.Initialize(_spellDamage, "Enemy");
             }
         }
 

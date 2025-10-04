@@ -32,11 +32,6 @@ namespace Weapons
         private void Awake()
         {
             _spriteRenderer = GetComponent<SpriteRenderer>();
-
-            if (_attackSequence.Length == 0)
-                Debug.LogError($"{name}: No attacks registered.");
-            if (_attackSequence.Length != _attackDelays.Length)
-                Debug.LogError($"{name}: Attack sequence and attack delays lists do not match.");
         }
         
         private void Update()
@@ -97,7 +92,7 @@ namespace Weapons
             Attack attack = _attackSequence[_currentSequenceIndex];
             Attack attackInstance = Instantiate(attack, transform.position, transform.rotation);
             
-            attackInstance.Initialize(Damage, 1f, _allyTag);
+            attackInstance.Initialize(Damage, _allyTag);
             
             _currentSequenceIndex++;
             _currentSequenceIndex %= _attackSequence.Length; // Loop sequence

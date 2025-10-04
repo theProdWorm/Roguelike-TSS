@@ -23,6 +23,7 @@ namespace Actors.Enemies.DarkFairy
             if (!_darkFairy)
                 _darkFairy = animator.GetComponent<DarkFairy>();
             
+            _castingStarted = false;
             _remainingDuration = _castDuration;
             _timeUntilNextCast = 0;
         }

@@ -1,31 +1,31 @@
 fileFormatVersion: 2
-guid: c2d8d5fe260add2478132b33d883b48f
+guid: ea18cad6634b03643a8ac535d2723f77
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1779243137197915694
-    second: darkfairy_phase1_spell_0
+      213: -4702395063258067905
+    second: darkfairy_spirit_death_0
   - first:
-      213: 2527027654895694797
-    second: darkfairy_phase1_spell_1
+      213: 3321694735795638615
+    second: darkfairy_spirit_death_1
   - first:
-      213: 8921589526935658425
-    second: darkfairy_phase1_spell_2
+      213: -5324592529122779892
+    second: darkfairy_spirit_death_2
   - first:
-      213: -6789605320923405930
-    second: darkfairy_phase1_spell_3
+      213: 2062920628575339806
+    second: darkfairy_spirit_death_3
   - first:
-      213: 5531069873707742422
-    second: darkfairy_phase1_spell_4
+      213: -8360914760364886823
+    second: darkfairy_spirit_death_4
   - first:
-      213: 2400500575023460720
-    second: darkfairy_phase1_spell_5
+      213: -1434143213268219703
+    second: darkfairy_spirit_death_5
   - first:
-      213: -4542437861831750397
-    second: darkfairy_phase1_spell_6
+      213: -969013376517689903
+    second: darkfairy_spirit_death_6
   - first:
-      213: -5359400199318098118
-    second: darkfairy_phase1_spell_7
+      213: -282717773858648612
+    second: darkfairy_spirit_death_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -134,155 +134,177 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: darkfairy_phase1_spell_0
+      name: bat_death_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 64
         width: 64
         height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: e2ebbb9d43421b810800000000000000
-      internalID: 1779243137197915694
+      spriteID: 85508b9d55154f24eb08bc52460b9486
+      internalID: 298492399
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: darkfairy_phase1_spell_1
+      name: bat_death_1
       rect:
         serializedVersion: 2
         x: 64
-        y: 0
+        y: 64
         width: 64
         height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: dc375ab634ec11320800000000000000
-      internalID: 2527027654895694797
+      spriteID: 7a52e6a1051c087458b4826f2a222216
+      internalID: 1489194240
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: darkfairy_phase1_spell_2
+      name: bat_death_2
       rect:
         serializedVersion: 2
         x: 128
-        y: 0
+        y: 64
         width: 64
         height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 9bf58d8f76adfcb70800000000000000
-      internalID: 8921589526935658425
+      spriteID: 3a5a90bc558a95e4680b401a4e5da599
+      internalID: -435838696
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: darkfairy_phase1_spell_3
+      name: bat_death_3
       rect:
         serializedVersion: 2
         x: 192
-        y: 0
+        y: 64
         width: 64
         height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 6912249fee976c1a0800000000000000
-      internalID: -6789605320923405930
+      spriteID: c6d4538e46988db40865c5a9ac3cf974
+      internalID: 1707338386
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: darkfairy_phase1_spell_4
+      name: bat_death_4
       rect:
         serializedVersion: 2
         x: 256
-        y: 0
+        y: 64
         width: 64
         height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 6d4f63acebe42cc40800000000000000
-      internalID: 5531069873707742422
+      spriteID: 04a4a4036fd8f694687e0a709736b792
+      internalID: -1010008799
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: darkfairy_phase1_spell_5
+      name: bat_death_5
       rect:
         serializedVersion: 2
         x: 320
-        y: 0
+        y: 64
         width: 64
         height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 071f469fd8a405120800000000000000
-      internalID: 2400500575023460720
+      spriteID: f62e2f991f0ed8448a19e75be31b7883
+      internalID: 531459108
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: darkfairy_phase1_spell_6
+      name: bat_death_6
       rect:
         serializedVersion: 2
         x: 384
-        y: 0
+        y: 64
         width: 64
         height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 30dcb3fd4d406f0c0800000000000000
-      internalID: -4542437861831750397
+      spriteID: f02d75148579e8b438adf8fc75709741
+      internalID: -325205765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bat_death_7
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdce7a9f92261be49a22231068da7e0c
+      internalID: 1366334125
       vertices: []
       indices: 
       edges: []
@@ -291,7 +313,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: e880d4bb070bece419e0d86e59269cac
+    spriteID: fced0c7721b8af845877b6ed0434b861
     internalID: 0
     vertices: []
     indices: 
@@ -301,13 +323,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      darkfairy_phase1_spell_0: 1779243137197915694
-      darkfairy_phase1_spell_1: 2527027654895694797
-      darkfairy_phase1_spell_2: 8921589526935658425
-      darkfairy_phase1_spell_3: -6789605320923405930
-      darkfairy_phase1_spell_4: 5531069873707742422
-      darkfairy_phase1_spell_5: 2400500575023460720
-      darkfairy_phase1_spell_6: -4542437861831750397
+      bat_death_0: 298492399
+      bat_death_1: 1489194240
+      bat_death_2: -435838696
+      bat_death_3: 1707338386
+      bat_death_4: -1010008799
+      bat_death_5: 531459108
+      bat_death_6: -325205765
+      bat_death_7: 1366334125
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

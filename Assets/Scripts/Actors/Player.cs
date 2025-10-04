@@ -13,7 +13,7 @@ namespace Actors
         private static readonly int DELTA_MOVING = Animator.StringToHash("deltaMoving");
         private static readonly int DIR_X = Animator.StringToHash("dirX");
         private static readonly int DIR_Y = Animator.StringToHash("dirY");
-        private static readonly int DEAD = Animator.StringToHash("dead");
+        private static readonly int DIE = Animator.StringToHash("die");
         
         [SerializeField] private Animator _animator;
         [SerializeField] private PlayerCamera _camera;
@@ -101,7 +101,12 @@ namespace Actors
 
         protected override void Die()
         {
-            _animator.SetBool(DEAD, true);
+            if (_dead)
+                return;
+            
+            base.Die();
+
+            _animator.SetTrigger(DIE);
             
             // TODO: Switch input mapping instead
             _input.enabled = false;

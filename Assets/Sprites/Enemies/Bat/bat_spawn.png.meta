@@ -1,31 +1,22 @@
 fileFormatVersion: 2
-guid: ea18cad6634b03643a8ac535d2723f77
+guid: a77edf98e3a41804ebf296d044eae1b0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4702395063258067905
-    second: darkfairy_spirit_death_0
+      213: 801369374896446965
+    second: darkfairy_spirit_summoned_0
   - first:
-      213: 3321694735795638615
-    second: darkfairy_spirit_death_1
+      213: -7371654060009055136
+    second: darkfairy_spirit_summoned_1
   - first:
-      213: -5324592529122779892
-    second: darkfairy_spirit_death_2
+      213: 5510698131698919155
+    second: darkfairy_spirit_summoned_2
   - first:
-      213: 2062920628575339806
-    second: darkfairy_spirit_death_3
+      213: 1570838031608506370
+    second: darkfairy_spirit_summoned_3
   - first:
-      213: -8360914760364886823
-    second: darkfairy_spirit_death_4
-  - first:
-      213: -1434143213268219703
-    second: darkfairy_spirit_death_5
-  - first:
-      213: -969013376517689903
-    second: darkfairy_spirit_death_6
-  - first:
-      213: -282717773858648612
-    second: darkfairy_spirit_death_7
+      213: -5689589811300693016
+    second: darkfairy_spirit_summoned_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -117,15 +108,28 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: darkfairy_spirit_death_0
+      name: bat_spawn_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 64
+        y: 0
         width: 64
         height: 64
       alignment: 0
@@ -134,20 +138,20 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: f3cc3f4ba9cbdbeb0800000000000000
-      internalID: -4702395063258067905
+      spriteID: 4103063a18c54df40a384754160b3e73
+      internalID: -1870620020
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: darkfairy_spirit_death_1
+      name: bat_spawn_1
       rect:
         serializedVersion: 2
         x: 64
-        y: 64
+        y: 0
         width: 64
         height: 64
       alignment: 0
@@ -156,20 +160,20 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 751526b53c7091e20800000000000000
-      internalID: 3321694735795638615
+      spriteID: c16e89fc5a7e60e4db850f580b300cbf
+      internalID: 1294913240
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: darkfairy_spirit_death_2
+      name: bat_spawn_2
       rect:
         serializedVersion: 2
         x: 128
-        y: 64
+        y: 0
         width: 64
         height: 64
       alignment: 0
@@ -178,20 +182,20 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: c0d10ff3e4f3b16b0800000000000000
-      internalID: -5324592529122779892
+      spriteID: 83a3ae7d953f6c241909fde557fe3226
+      internalID: 229979033
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: darkfairy_spirit_death_3
+      name: bat_spawn_3
       rect:
         serializedVersion: 2
         x: 192
-        y: 64
+        y: 0
         width: 64
         height: 64
       alignment: 0
@@ -200,20 +204,20 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: e150f02c167f0ac10800000000000000
-      internalID: 2062920628575339806
+      spriteID: 7e869b7fe6115694e9f6a5040db227be
+      internalID: 77255763
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: darkfairy_spirit_death_4
+      name: bat_spawn_4
       rect:
         serializedVersion: 2
         x: 256
-        y: 64
+        y: 0
         width: 64
         height: 64
       alignment: 0
@@ -222,76 +226,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 9d4712fc25018fb80800000000000000
-      internalID: -8360914760364886823
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: darkfairy_spirit_death_5
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9c84c109856e81ce0800000000000000
-      internalID: -1434143213268219703
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: darkfairy_spirit_death_6
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1ddaf06d77f5d82f0800000000000000
-      internalID: -969013376517689903
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: darkfairy_spirit_death_7
-      rect:
-        serializedVersion: 2
-        x: 448
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: cdd477dbea5931cf0800000000000000
-      internalID: -282717773858648612
+      spriteID: 7f6551d9671e57d4ca7ce51fd3deda75
+      internalID: 262724172
       vertices: []
       indices: 
       edges: []
@@ -300,7 +238,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: fced0c7721b8af845877b6ed0434b861
+    spriteID: 86399bcbf08254a41ae99f2c47e7e4a5
     internalID: 0
     vertices: []
     indices: 
@@ -310,14 +248,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      darkfairy_spirit_death_0: -4702395063258067905
-      darkfairy_spirit_death_1: 3321694735795638615
-      darkfairy_spirit_death_2: -5324592529122779892
-      darkfairy_spirit_death_3: 2062920628575339806
-      darkfairy_spirit_death_4: -8360914760364886823
-      darkfairy_spirit_death_5: -1434143213268219703
-      darkfairy_spirit_death_6: -969013376517689903
-      darkfairy_spirit_death_7: -282717773858648612
+      bat_spawn_0: -1870620020
+      bat_spawn_1: 1294913240
+      bat_spawn_2: 229979033
+      bat_spawn_3: 77255763
+      bat_spawn_4: 262724172
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
