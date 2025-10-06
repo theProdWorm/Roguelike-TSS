@@ -49,7 +49,7 @@ namespace Actors
             _dead = true;
         }
         
-        private void DestroySelf() => Destroy(gameObject);
+        public void DestroySelf() => Destroy(gameObject);
 
         // private void OnCollisionEnter2D(Collision2D collision)
         // {

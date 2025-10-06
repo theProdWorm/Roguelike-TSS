@@ -3,6 +3,7 @@ using System.Linq;
 using Interaction;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 using Weapons;
 
 namespace Actors
@@ -14,6 +15,8 @@ namespace Actors
         private static readonly int DIR_X = Animator.StringToHash("dirX");
         private static readonly int DIR_Y = Animator.StringToHash("dirY");
         private static readonly int DIE = Animator.StringToHash("die");
+        
+        private static readonly Color TRANSPARENT = new(0, 0, 0, 0); 
         
         [SerializeField] private Animator _animator;
         [SerializeField] private PlayerCamera _camera;
@@ -27,9 +30,9 @@ namespace Actors
         [SerializeField] private float _verticalDeadZone;
         
         [Header("Weapons")]
-        [SerializeField] private int _maxWeapons = 3;
         [SerializeField] private float _weaponPositionOffset;
-
+        [SerializeField] private List<Image> _weaponsUI;
+        
         private PlayerInput _input;
         
         private readonly List<GameObject> _interactablesInRange = new();
@@ -51,7 +54,7 @@ namespace Actors
         {
             base.Awake();
             
-            _weapons = new Weapon[_maxWeapons];
+            _weapons = new Weapon[_weaponsUI.Count];
             
             _input = GetComponent<PlayerInput>();
         }
@@ -121,6 +124,9 @@ namespace Actors
         
             foreach (var interactable in _interactablesInRange)
             {
+                if (interactable.CompareTag("Untagged"))
+                    continue;
+                
                 Vector2 dir = (interactable.transform.position - transform.position).normalized;
                 float dot = Vector2.Dot(dir, _lookDir);
 
@@ -147,7 +153,7 @@ namespace Actors
             int index = _equippedWeaponIndex;
 
             // Find first empty slot
-            for (int i = 0; i < _maxWeapons; i++)
+            for (int i = 0; i < _weapons.Length; i++)
             {
                 if (_weapons[i] != null) 
                     continue;
@@ -170,6 +176,9 @@ namespace Actors
             _weapons[index] = newWeapon;
             _equippedWeapon = newWeapon;
             _equippedWeaponIndex = index;
+            
+            _weaponsUI[index].sprite = newWeapon.GetComponent<SpriteRenderer>().sprite;
+            _weaponsUI[index].color = Color.white;
         
             // Weapon follows player
             newWeapon.transform.SetParent(_weaponPositionTransform);
@@ -181,15 +190,28 @@ namespace Actors
         {
             var weapon = _weapons[index];
             _weapons[index] = null;
+            
+            _weaponsUI[index].sprite = null;
+            _weaponsUI[index].color = TRANSPARENT;
 
             weapon.Attacking = false; // Prevents undesirable attacks upon enabling the weapon again
-        
+            weapon.SetEquipper(null);
+            
             var throwable = weapon.GetComponent<Throwable>();
-            throwable.Throw(_lookDir, 2f);
+            throwable.Throw(_lookDir, 10f);
         
-            weapon.transform.SetParent(null);
+            _equippedWeapon = null;
+            _equippedWeaponIndex = -1;
 
-            weapon.tag = "Interactable";
+            for (int i = 0; i < _weapons.Length; i++)
+            {
+                if (!_weapons[i])
+                    continue;
+
+                _equippedWeaponIndex = i;
+                _equippedWeapon = _weapons[i];
+                break;
+            }
         }
     
         private void OnWeaponIndexChanged()
@@ -204,6 +226,11 @@ namespace Actors
             previousWeapon.gameObject.SetActive(false);
         
             _equippedWeapon.gameObject.SetActive(true);
+
+            for (int i = 0; i < _weapons.Length; i++)
+            {
+                _weaponsUI[i].color = i == _equippedWeaponIndex ? Color.white : Color.gray;
+            }
         }
 
         #region INPUT
@@ -246,7 +273,7 @@ namespace Actors
     
         public void OnInteract(InputAction.CallbackContext context)
         {
-            if (!context.performed || _interactablesInRange.Count == 0)
+            if (!context.performed || !_targetInteractable)
                 return;
             
             var interactable = _targetInteractable.GetComponent<IInteractable>();

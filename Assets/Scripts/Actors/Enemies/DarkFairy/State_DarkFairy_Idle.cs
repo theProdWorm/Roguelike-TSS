@@ -4,7 +4,6 @@ namespace Actors.Enemies.DarkFairy
 {
     public class State_DarkFairy_Idle : StateMachineBehaviour
     {
-        private static readonly int PLAYER_DISTANCE = Animator.StringToHash("playerDistance");
         private static readonly int IDLE = Animator.StringToHash("idle");
         
         private Transform _targetPlayer;
@@ -26,9 +25,6 @@ namespace Actors.Enemies.DarkFairy
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
             var playerDistanceVector = _targetPlayer.position - animator.transform.position;
-            var playerDistance = playerDistanceVector.magnitude;
-
-            animator.SetFloat(PLAYER_DISTANCE, playerDistance);
             if (playerDistanceVector.magnitude <= 1)
             {
                 _rigidbody.linearVelocity = Vector2.zero;

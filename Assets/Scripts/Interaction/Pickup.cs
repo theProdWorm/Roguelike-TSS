@@ -11,15 +11,16 @@ namespace Interaction
         {
             player.PickUp(gameObject);
 
+            Throw(Vector2.zero, 0);
+            
             tag = "Untagged";
-            _collider.enabled = false;
         }
 
         public override void Throw(Vector2 dir, float initialVelocity)
         {
             base.Throw(dir, initialVelocity);
-        
-            _collider.enabled = true;
+
+            tag = "Interactable";
         }
     }
 }

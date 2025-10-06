@@ -1,10 +1,12 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 using Weapons.Attacks;
 
 namespace Actors.Enemies.DarkFairy
 {
     public class DarkFairy : Enemy
     {
+        private static readonly int PLAYER_DISTANCE = Animator.StringToHash("playerDistance");
         private static readonly int SPELL_COOLDOWN = Animator.StringToHash("spellCooldown");
         private static readonly int TELEPORT_COOLDOWN = Animator.StringToHash("teleportCooldown");
         private static readonly int SHIELD_COOLDOWN = Animator.StringToHash("shieldCooldown");
@@ -60,6 +62,11 @@ namespace Actors.Enemies.DarkFairy
         
         private void Update()
         {
+            float playerDistance = _players
+                .Select(player => Vector2.Distance(player.transform.position, transform.position)).Min();
+            
+            _animator.SetFloat(PLAYER_DISTANCE, playerDistance);
+
             // Reduce timers and update animator parameters
             if (_teleportTimer > 0)
                 _animator.SetFloat(TELEPORT_COOLDOWN, _teleportTimer -= Time.deltaTime);

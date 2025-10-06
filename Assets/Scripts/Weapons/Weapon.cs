@@ -58,7 +58,16 @@ namespace Weapons
 
         public void SetEquipper(Entity entity)
         {
-            _allyTag = entity.tag;
+            if (entity)
+            {
+                _allyTag = entity.tag;
+                transform.parent = entity.transform;
+            }
+            else
+            {
+                _allyTag = "Untagged";
+                transform.parent = null;
+            }
         }
 
         private IEnumerator AttackRoutine()
