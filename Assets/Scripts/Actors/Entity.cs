@@ -50,5 +50,18 @@ namespace Actors
         }
         
         private void DestroySelf() => Destroy(gameObject);
+
+        // private void OnCollisionEnter2D(Collision2D collision)
+        // {
+        //     if (!collision.otherCollider.CompareTag("Wall"))
+        //         return;
+        //     
+        //     // Handle wall collisions
+        //     foreach (var contact in collision.contacts)
+        //     {
+        //         Vector2 correction = contact.normal * -contact.separation;
+        //         _rigidbody.position += correction;
+        //     }
+        // }
     }
 }

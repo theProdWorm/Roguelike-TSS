@@ -61,6 +61,8 @@ namespace Actors
             _animator.SetBool(DELTA_MOVING, _animator.GetBool(MOVING));
             _animator.SetBool(MOVING, _moveInput.magnitude > 0);
         
+            _rigidbody.linearVelocity = _moveInput * MoveSpeed;
+            
             if (_aimInput.magnitude >= 0.05f)
                 SetLookDirection(_aimInput);
             else if (_moveInput.magnitude >= 0.05f)
@@ -209,7 +211,6 @@ namespace Actors
         public void OnMove(InputAction.CallbackContext context)
         {
             _moveInput = context.ReadValue<Vector2>();
-            _rigidbody.linearVelocity = _moveInput * MoveSpeed;
         }
 
         public void OnAimController(InputAction.CallbackContext context)
