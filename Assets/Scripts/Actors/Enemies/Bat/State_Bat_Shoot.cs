@@ -39,7 +39,10 @@ namespace Actors.Enemies.Bat
         {
             _stateTimer -= Time.deltaTime;
             
-            _weapon.transform.right = (_target.position - animator.transform.position).normalized;
+            Vector3 pos = animator.transform.position;
+            var toPlayer = _target.position - pos;
+            
+            _weapon.transform.right = toPlayer.normalized;
             
             if (_stateTimer <= 0)
                 animator.SetTrigger(SWITCH_STATE);

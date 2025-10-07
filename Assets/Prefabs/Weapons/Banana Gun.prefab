@@ -160,7 +160,7 @@ MonoBehaviour:
   - 0.5
   _sequenceTimeout: 1
   Burst: 0
-  Damage: 3
+  Damage: 2
   _projectileSpeed: 5
   _trajectories: {fileID: 1094763944180369620}
   RandomizeTrajectory: 1

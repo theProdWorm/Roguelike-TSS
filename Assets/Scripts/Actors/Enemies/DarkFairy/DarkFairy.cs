@@ -15,8 +15,8 @@ namespace Actors.Enemies.DarkFairy
         [SerializeField] private Attack _meleePrefab;
         [SerializeField] private Attack _spellPrefab;
         
-        [SerializeField] private float _spellDamage = 20f;
-        [SerializeField] private float _meleeDamage = 10f;
+        [SerializeField] private float _spellDamage = 2f;
+        [SerializeField] private float _meleeDamage = 1f;
 
         private Player[] _players;
 

@@ -80,7 +80,7 @@ namespace Actors
         {
             if (dir.magnitude < 0.05f)
                 return;
-        
+            
             int dirX = Mathf.Abs(dir.x) <= _horizontalDeadZone ? 0 : dir.x > 0 ? 1 : -1;
             int dirY = Mathf.Abs(dir.y) <= _verticalDeadZone ? 0 : dir.y > 0 ? 1 : -1;
         
@@ -112,7 +112,6 @@ namespace Actors
 
             _animator.SetTrigger(DIE);
             
-            // TODO: Switch input mapping instead
             _input.enabled = false;
         }
         
