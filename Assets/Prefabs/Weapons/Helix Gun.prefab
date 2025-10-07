@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 821463530503471987}
   - component: {fileID: 3114114091132858672}
   - component: {fileID: 8698850249897771209}
+  - component: {fileID: 6174160484467828446}
   m_Layer: 0
-  m_Name: Gun
+  m_Name: Helix Gun
   m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -103,6 +104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0c3080a62de4d7da573853582dbf6d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _rigidbody: {fileID: 6174160484467828446}
   _collider: {fileID: 3114114091132858672}
 --- !u!58 &3114114091132858672
 CircleCollider2D:
@@ -156,13 +158,41 @@ MonoBehaviour:
   - {fileID: 5353459176419687493, guid: afd528a5d3c6fb2448810b280338b0f0, type: 3}
   - {fileID: 5353459176419687493, guid: afd528a5d3c6fb2448810b280338b0f0, type: 3}
   _attackDelays:
-  - 0
-  - 0.25
+  - 0.05
+  - 0.2
   _sequenceTimeout: 1
   Burst: 1
   Damage: 1
   _projectileSpeed: 5
   _trajectories: {fileID: 4399686545575160027}
+  RandomizeTrajectory: 0
+--- !u!50 &6174160484467828446
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5810795547018845137}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &9164155055315262848
 GameObject:
   m_ObjectHideFlags: 0

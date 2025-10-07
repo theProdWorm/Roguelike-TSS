@@ -51,8 +51,6 @@ namespace Actors.Enemies.DarkFairy
             
             var spellAnimation = spellAnimatorController.animationClips[0];
             _spellAnimationLength = spellAnimation.length;
-            
-            print(_spellAnimationLength);
         }
         
         private void Start()

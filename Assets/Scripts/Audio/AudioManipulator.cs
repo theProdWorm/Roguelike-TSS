@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Audio;
 
-namespace Helpers
+namespace Audio
 {
     public class AudioManipulator : MonoBehaviour
     {
@@ -21,7 +21,7 @@ namespace Helpers
         
         private Coroutine _sfxVolumeLerpRoutine;
         private Coroutine _sfxPitchLerpRoutine;
-        
+
         public void SetMasterVolume(float value) => _master.audioMixer.SetFloat("MasterVolume", value);
         public void SetMasterPitch(float value) => _master.audioMixer.SetFloat("MasterPitch", value);
 
@@ -74,6 +74,11 @@ namespace Helpers
             StartCoroutine(LerpFunction(SetSFXPitch, currentValue, value));
         }
 
+        public void RestartMusic()
+        {
+            GameObject.Find("Music").GetComponent<AudioSource>().time = 0f;
+        }
+        
         private IEnumerator LerpFunction(Action<float> function, float startValue, float targetValue)
         {
             float elapsedTime = 0f;

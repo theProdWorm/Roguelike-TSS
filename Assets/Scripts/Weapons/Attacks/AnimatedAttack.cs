@@ -29,8 +29,9 @@ namespace Weapons.Attacks
         {
             if (!other.CompareTag(_enemyTag))
                 return;
-            
-            _collisions.Add(other);
+
+            if (!_collisions.Contains(other))
+                _collisions.Add(other);
         }
         
         private void OnTriggerExit2D(Collider2D other)

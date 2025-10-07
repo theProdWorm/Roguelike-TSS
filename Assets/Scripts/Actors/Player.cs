@@ -41,7 +41,6 @@ namespace Actors
         private Weapon[] _weapons;
         private Weapon _equippedWeapon;
         private int _equippedWeaponIndex = -1;
-        private int _deltaEquippedWeaponIndex;
         
         private Vector2 _moveInput;
         private Vector2 _aimInput;
@@ -174,11 +173,10 @@ namespace Actors
             
             // Update references
             _weapons[index] = newWeapon;
-            _equippedWeapon = newWeapon;
-            _equippedWeaponIndex = index;
+            
+            OnWeaponIndexChanged(index);
             
             _weaponsUI[index].sprite = newWeapon.GetComponent<SpriteRenderer>().sprite;
-            _weaponsUI[index].color = Color.white;
         
             // Weapon follows player
             newWeapon.transform.SetParent(_weaponPositionTransform);
@@ -214,22 +212,36 @@ namespace Actors
             }
         }
     
-        private void OnWeaponIndexChanged()
+        private void OnWeaponIndexChanged(int targetIndex)
         {
-            _deltaEquippedWeaponIndex = _equippedWeaponIndex;
+            int deltaEquippedWeaponIndex = _equippedWeaponIndex;
+            _equippedWeaponIndex = targetIndex;
             
             int numWeapons = _weapons.Count(weapon => weapon);
-            _equippedWeaponIndex %= numWeapons;
+            _equippedWeaponIndex = Mathf.Abs(_equippedWeaponIndex % numWeapons);
+            
+            _equippedWeapon = _weapons[_equippedWeaponIndex];
 
-            var previousWeapon = _weapons[_deltaEquippedWeaponIndex];
-            previousWeapon.Attacking = false;
-            previousWeapon.gameObject.SetActive(false);
-        
-            _equippedWeapon.gameObject.SetActive(true);
+            if (deltaEquippedWeaponIndex >= 0)
+            {
+                var previousWeapon = _weapons[deltaEquippedWeaponIndex];
+                previousWeapon.Attacking = false;
+                previousWeapon.SetVisible(false);
+            }
+
+            _equippedWeapon.SetVisible(true);
 
             for (int i = 0; i < _weapons.Length; i++)
             {
-                _weaponsUI[i].color = i == _equippedWeaponIndex ? Color.white : Color.gray;
+                if (!_weapons[i])
+                    continue;
+                
+                var spriteColor = _weapons[i].GetSpriteColor();
+
+                if (i != _equippedWeaponIndex)
+                    spriteColor *= Color.gray;
+
+                _weaponsUI[i].color = spriteColor;
             }
         }
 
@@ -258,8 +270,7 @@ namespace Actors
             if (!context.performed || _weapons.All(x => !x))
                 return;
         
-            _equippedWeaponIndex++;
-            OnWeaponIndexChanged();
+            OnWeaponIndexChanged(_equippedWeaponIndex + 1);
         }
 
         public void OnPreviousWeapon(InputAction.CallbackContext context)
@@ -267,8 +278,7 @@ namespace Actors
             if (!context.performed || _weapons.All(x => !x))
                 return;
         
-            _equippedWeaponIndex--;
-            OnWeaponIndexChanged();
+            OnWeaponIndexChanged(_equippedWeaponIndex - 1);
         }
     
         public void OnInteract(InputAction.CallbackContext context)

@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 1733001703391361494}
   - component: {fileID: -6357212884291535630}
   - component: {fileID: 5353459176419687493}
+  - component: {fileID: -7625111358280689805}
   m_Layer: 9
-  m_Name: Projectile Attack
+  m_Name: Banana
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -142,7 +143,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 2208703988740019828, guid: b9487de2e2af1604096f53c70bf25cc8, type: 3}
+  m_Sprite: {fileID: 7381965769198725172, guid: 9d328360916e1a941b52a4d29846cb64, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -167,17 +168,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 1
   _lifeTime: 1
-  _path:
-    m_EditModeType: 1
-    m_Knots: []
-    m_MetaData: []
-    m_Closed: 0
-    m_IntData:
-      m_Data: []
-    m_FloatData:
-      m_Data: []
-    m_Float4Data:
-      m_Data: []
-    m_ObjectData:
-      m_Data: []
-  _speed: 0
+--- !u!114 &-7625111358280689805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8276496252214447657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7f3981431a07b64091826c549c4e013, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rigidbody: {fileID: 2486956590932201602}
+  _minSpeed: 150
+  _maxSpeed: 600

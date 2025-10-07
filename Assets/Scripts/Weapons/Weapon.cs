@@ -9,39 +9,39 @@ namespace Weapons
     {
         [SerializeField] protected Attack[] _attackSequence;
         [SerializeField] protected float[] _attackDelays;
-        
+
         [SerializeField] private float _sequenceTimeout = 1f;
-        
+
         [Tooltip("If checked, treats the full attack sequence as \"one\" attack.")]
         public bool Burst;
-        
+
         public float Damage = 1f;
-        
+
         protected string _allyTag;
-        
+
         private SpriteRenderer _spriteRenderer;
-        
+
         public bool Attacking { get; set; }
         private float _attackTimer;
         private int _currentSequenceIndex;
-        
+
         private float _sequenceTimer;
 
         private Coroutine _attackRoutine;
-        
+
         private void Awake()
         {
             _spriteRenderer = GetComponent<SpriteRenderer>();
         }
-        
+
         private void Update()
         {
             // Decrease timer when attack has finished
-            if (_attackRoutine == null && _attackTimer > 0f)
+            if (_attackTimer > 0f)
                 _attackTimer -= Time.deltaTime;
-
+            
             // Perform attack as soon as timer reaches zero, if attacking
-            if (Attacking && _attackTimer <= 0f)
+            if (Attacking && _attackRoutine == null && _attackTimer < float.Epsilon)
             {
                 if (Burst)
                     _attackRoutine = StartCoroutine(AttackRoutine());
@@ -50,9 +50,12 @@ namespace Weapons
             }
 
             // Reset sequence after an idle delay
-            if (_sequenceTimer > 0)
-                _sequenceTimer -= Time.deltaTime;
-            if (_sequenceTimer <= 0)
+            if (!(_sequenceTimer > 0))
+                return;
+
+            _sequenceTimer -= Time.deltaTime;
+
+            if (_sequenceTimer <= float.Epsilon)
                 _currentSequenceIndex = 0;
         }
 
@@ -75,19 +78,10 @@ namespace Weapons
             int remainingAttacks = _attackSequence.Length;
             while (remainingAttacks > 0)
             {
-                // Set delay
-                float attackTimer = _attackDelays[_currentSequenceIndex];
-                
                 PerformAttack();
-                
+
                 remainingAttacks--;
-                
-                // Wait before the next attack in the sequence
-                while (attackTimer > 0f)
-                {
-                    attackTimer -= Time.deltaTime;
-                    yield return null;
-                }
+                yield return new WaitUntil(() => _attackTimer <= float.Epsilon);
             }
 
             _attackRoutine = null;
@@ -97,12 +91,12 @@ namespace Weapons
         {
             _attackTimer = _attackDelays[_currentSequenceIndex];
             _sequenceTimer = _sequenceTimeout;
-            
+
             Attack attack = _attackSequence[_currentSequenceIndex];
             Attack attackInstance = Instantiate(attack, transform.position, transform.rotation);
-            
+
             attackInstance.Initialize(Damage, _allyTag);
-            
+
             _currentSequenceIndex++;
             _currentSequenceIndex %= _attackSequence.Length; // Loop sequence
 
@@ -112,6 +106,22 @@ namespace Weapons
         public void FlipSprite(bool flip)
         {
             _spriteRenderer.flipY = flip;
+        }
+
+        public void SetVisible(bool visible)
+        {
+            _spriteRenderer.enabled = visible;
+        }
+
+        public Color GetSpriteColor() => _spriteRenderer.color;
+
+        private void OnDisable()
+        {
+            if (_attackRoutine != null)
+            {
+                StopCoroutine(_attackRoutine);
+                _attackRoutine = null;
+            }
         }
     }
 }

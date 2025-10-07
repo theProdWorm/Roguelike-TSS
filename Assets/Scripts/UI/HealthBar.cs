@@ -1,11 +1,10 @@
 using Actors;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-namespace Helpers
+namespace UI
 {
-    public class HealthBarUI : MonoBehaviour
+    public class HealthBar : MonoBehaviour
     {
         [SerializeField] private Entity _target;
         [SerializeField] private Slider _healthBarSlider;
