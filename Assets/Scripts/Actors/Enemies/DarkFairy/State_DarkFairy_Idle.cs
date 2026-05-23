@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Pathfinding;
+using UnityEngine;
 
 namespace Actors.Enemies.DarkFairy
 {
@@ -9,6 +10,8 @@ namespace Actors.Enemies.DarkFairy
         private Transform _targetPlayer;
         private DarkFairy _darkFairy;
         private Rigidbody2D _rigidbody;
+
+        private NavigationArea _navArea;
         
         public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
@@ -20,6 +23,8 @@ namespace Actors.Enemies.DarkFairy
 
             _darkFairy = animator.GetComponent<DarkFairy>();
             _rigidbody = animator.GetComponent<Rigidbody2D>();
+            
+            _navArea = FindFirstObjectByType<NavigationArea>();
         }
 
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -31,7 +36,12 @@ namespace Actors.Enemies.DarkFairy
                 return;
             }
             
-            var movementVector = _darkFairy.MoveSpeed * playerDistanceVector.normalized;
+            bool canPathToPlayer = Pathfinder.FindPath(_navArea, animator.transform.position, _targetPlayer.position, out var path);
+            var nextNode = path[1];
+
+            var moveVector = nextNode.Position - (Vector2) animator.transform.position;
+            
+            var movementVector = _darkFairy.MoveSpeed * moveVector.normalized;
             _rigidbody.linearVelocity = movementVector;
         }
         
