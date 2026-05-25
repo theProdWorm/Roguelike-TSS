@@ -14,7 +14,10 @@ namespace Editor
             var navArea = (NavigationArea) target;
 
             if (GUILayout.Button("Generate"))
+            {
                 navArea.GenerateNodes();
+                Debug.Log(navArea.Graph.Count);
+            }
         }
     }
 }

@@ -214,10 +214,9 @@ namespace Actors
         private void OnWeaponIndexChanged(int targetIndex)
         {
             int deltaEquippedWeaponIndex = _equippedWeaponIndex;
-            _equippedWeaponIndex = targetIndex;
             
             int numWeapons = _weapons.Count(weapon => weapon);
-            _equippedWeaponIndex = Mathf.Abs(_equippedWeaponIndex % numWeapons);
+            _equippedWeaponIndex = targetIndex < 0 ? numWeapons - 1 : targetIndex % numWeapons;
             
             _equippedWeapon = _weapons[_equippedWeaponIndex];
 

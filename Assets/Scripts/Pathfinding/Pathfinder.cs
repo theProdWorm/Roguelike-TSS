@@ -73,7 +73,17 @@ namespace Pathfinding
                 path.Add(cameFrom[path[^1]]);
 
             path.Reverse();
+
+            DrawPath(path);
             return path;
+        }
+
+        private static void DrawPath(List<Node> path)
+        {
+            for (int i = 0; i < path.Count - 1; i++)
+            {
+                Debug.DrawLine(path[i].Position, path[i + 1].Position, Color.magenta);
+            }
         }
     }
 }
